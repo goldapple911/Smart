@@ -4,6 +4,7 @@ import Layout from "pages/Layout";
 import Home from "pages/Home";
 import NoPage from "pages/NoPage";
 import Buildings from "pages/Buildings";
+import NFTSListPage from "pages/NFTs";
 import "./App.css";
 
 function App() {
@@ -13,9 +14,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="/nfts" element={<NFTSListPage />} />
             <Route path="/buildings" element={<Buildings />} />
             <Route path="*" element={<NoPage />} />
-          </Route>
+          </Route>s
         </Routes>
       </BrowserRouter>
     </div>
