@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, TextField } from "@mui/material";
 import { getCurrenTeletubbyData } from "api";
 import renderTeletubbyCard from "../../components/Teletubby/index";
 
 const Teletubbies = () => {
   const [numTeletubbiesToShow, setNumTeletubbiesToShow] = useState(20);
   const [visibleTeletubbies, setVisibleTeletubbies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const containerRef = useRef(null);
+  const filteredTeletubbies = visibleTeletubbies.filter((teletubby) => {
+    return teletubby.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   const getTeletubbies = async () => {
     try {
@@ -18,10 +23,9 @@ const Teletubbies = () => {
 
   useEffect(() => {
     getTeletubbies();
-  }, [numTeletubbiesToShow]);
+  }, [numTeletubbiesToShow]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleScroll = () => {
-    console.error("here");
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       setNumTeletubbiesToShow(numTeletubbiesToShow + 20);
     }
@@ -46,19 +50,28 @@ const Teletubbies = () => {
       >
         Teletubbies
       </Typography>
-
-      <Grid
-        container
-        spacing={1}
-        sx={{
-          "& > div": { border: "1px solid black" },
-        }}
-        style={{ textAlign: "left" }}
-      >
-        {visibleTeletubbies.map((teletubby, index) =>
-          renderTeletubbyCard(teletubby, index)
-        )}
-      </Grid>
+      <div ref={containerRef}>
+        <TextField
+          label="Search Teletubbies"
+          variant="outlined"
+          width="50%"
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          style={{ marginBottom: "20px" }}
+        />
+        <Grid
+          container
+          spacing={1}
+          sx={{
+            "& > div": { border: "1px solid black" },
+          }}
+          style={{ textAlign: "left" }}
+        >
+          {filteredTeletubbies
+            .slice(0, numTeletubbiesToShow)
+            .map((teletubby, index) => renderTeletubbyCard(teletubby, index))}
+        </Grid>
+      </div>
     </div>
   );
 };

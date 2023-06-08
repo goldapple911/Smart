@@ -32,12 +32,7 @@ const renderTeletubbyCard = (teletubby, index) => {
           <Box sx={{ mt: 2 }}>
             {teletubby.traits.map((item, key) => {
               return (
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  key={index}
-                  sx={{ mr: 2, mb: 1 }}
-                >
+                <Button variant="outlined" key={index} sx={{ mr: 2, mb: 1 }}>
                   {item}
                 </Button>
               );
