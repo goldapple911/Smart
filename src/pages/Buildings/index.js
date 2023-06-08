@@ -22,16 +22,39 @@ const Buildings = () => {
   const getCurrentBuildings = async () => {
     const result = await getCurrentBuildingsData();
 
-    console.log(result.data, "adfadfdfsdfas");
     if (result.data) {
-      console.log(result.data.buildings);
       setBuildingdata(result.data.buildings);
     }
   };
+
   useEffect(() => {
     getCurrentBuildings();
   }, []);
 
+  // display 20 items in screen and more items whenever scroll downs
+
+  // const [buildings, setBuildings] = useState(buildingsData.buildings);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    // return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight ||
+      searchQuery.length > 0
+    ) {
+      return;
+    }
+    setBuildingdata((prevBuildings) => prevBuildings.concat([]));
+  };
+
+  useEffect(() => {
+    PAGE_SIZE += 3;
+  }, [buildingdata]);
   return (
     <Container maxWidth="md" className="pt-10">
       <TableContainer component={Paper}>
@@ -47,9 +70,9 @@ const Buildings = () => {
           </TableHead>
           <TableBody>
             {buildingdata &&
-              buildingdata.map(
-                (item, i) => item && <TRowComponent item={item} />
-              )}
+              buildingdata
+                .slice(0, PAGE_SIZE)
+                .map((item, i) => item && <TRowComponent item={item} />)}
           </TableBody>
         </Table>
       </TableContainer>
