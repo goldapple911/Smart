@@ -1,4 +1,5 @@
 import axios from "axios";
+// import Buildings from "./buildings.json";
 
 const weatherOptions = {
   method: "GET",
@@ -13,6 +14,19 @@ const weatherOptions = {
 export const getCurrentWeatherData = async () => {
   try {
     const response = await axios.request(weatherOptions);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const buildingOptions = {
+  method: "GET",
+  url: "./buildings.json",
+};
+export const getCurrentBuildingsData = async () => {
+  try {
+    const response = await axios.request(buildingOptions);
     return response;
   } catch (error) {
     throw error;
