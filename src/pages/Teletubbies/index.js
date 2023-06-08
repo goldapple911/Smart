@@ -57,6 +57,7 @@ const Teletubbies = () => {
       >
         Teletubbies
       </Typography>
+      <p>s;lk;lkfj;lskdfl;ke;lfe</p>
 
       <Grid container spacing={3}   sx={{ "& > div": { border: "1px solid black" } }}>
       {teletubbies.map((teletubby, index) => renderTeletubbyCard(teletubby, index))}
