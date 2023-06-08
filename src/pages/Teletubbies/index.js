@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Grid,Typography} from "@mui/material";
+import React, { useState, useEffect, useRef } from "react";
+import { Grid, Typography } from "@mui/material";
 import { getCurrenTeletubbyData } from "api";
 import renderTeletubbyCard from "../../components/Teletubby/index";
+
 const Teletubbies = () => {
-  const [teletubbies, setTeletubbies] = useState([]);
+  const [numTeletubbiesToShow, setNumTeletubbiesToShow] = useState(20);
+  const [visibleTeletubbies, setVisibleTeletubbies] = useState([]);
 
   const getTeletubbies = async () => {
     try {
       const response = await getCurrenTeletubbyData();
-      setTeletubbies(response.data);
+      setVisibleTeletubbies(response.data.slice(0, numTeletubbiesToShow));
     } catch (error) {
       console.error(error);
     }
@@ -16,7 +18,19 @@ const Teletubbies = () => {
 
   useEffect(() => {
     getTeletubbies();
-  }, []);
+  }, [numTeletubbiesToShow]);
+
+  const handleScroll = () => {
+    console.error("here");
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      setNumTeletubbiesToShow(numTeletubbiesToShow + 20);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   return (
     <div>
@@ -35,10 +49,13 @@ const Teletubbies = () => {
 
       <Grid
         container
-        spacing={3}
-        sx={{ "& > div": { border: "1px solid black" } , paddingLeft:10, paddingRight:10}}
+        spacing={1}
+        sx={{
+          "& > div": { border: "1px solid black" },
+        }}
+        style={{ textAlign: "left" }}
       >
-        {teletubbies.map((teletubby, index) =>
+        {visibleTeletubbies.map((teletubby, index) =>
           renderTeletubbyCard(teletubby, index)
         )}
       </Grid>
