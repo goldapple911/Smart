@@ -1,6 +1,6 @@
  import React, { useState, useRef, useEffect } from "react";
 import { Grid, TextField, Typography } from "@mui/material"
-import { getCurrenTeletubbyData } from 'api/index';
+import { getCurrenTeletubbyData } from 'api';
 
 const Teletubbies = () => {
   const [teletubbies, setTeletubbies] = useState([]);
@@ -57,7 +57,7 @@ const Teletubbies = () => {
         Teletubbies
       </Typography>
 
-      <Grid container spacing={3} className="teletubby-grid-container">
+      <Grid container spacing={3}   sx={{ "& > div": { border: "1px solid black" } }}>
       {teletubbies.map((teletubby, index) => renderTeletubbyCard(teletubby, index))}
       </Grid>
     </div>

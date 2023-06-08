@@ -21,7 +21,7 @@ export const getCurrentWeatherData = async () => {
 
 const teletubbyOptions = {
   method:"GET",
-  url:"./teletubbies.json",
+  url:"/teletubbies.json",
 };
 
 export const getCurrenTeletubbyData = async () => {

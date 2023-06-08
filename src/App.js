@@ -4,7 +4,7 @@ import Layout from "pages/Layout";
 import Home from "pages/Home";
 
 import "./App.css";
-import Teletubbies from "pages/Teletubbies/index";
+import Teletubbies from "pages/Teletubbies";
 import NoPage from "pages/NoPage";
 
 function App() {
