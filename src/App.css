@@ -36,3 +36,6 @@
     transform: rotate(360deg);
   }
 }
+.teletubby-grid-container > div {
+  border: 1px solid black;
+}
