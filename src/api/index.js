@@ -1,5 +1,4 @@
 import axios from "axios";
-// import Buildings from "./buildings.json";
 
 const weatherOptions = {
   method: "GET",
