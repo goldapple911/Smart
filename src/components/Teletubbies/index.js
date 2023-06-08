@@ -1,6 +1,6 @@
- import React, { useState, useRef, useEffect } from "react";
-import { Grid, TextField, Typography } from "@mui/material"
-import { getCurrenTeletubbyData } from 'api';
+import React, { useState, useRef, useEffect } from "react";
+import { Grid, TextField, Typography } from "@mui/material";
+import { getCurrenTeletubbyData } from "api";
 
 const Teletubbies = () => {
   const [teletubbies, setTeletubbies] = useState([]);
@@ -12,13 +12,12 @@ const Teletubbies = () => {
     } catch (error) {
       console.error(error);
     }
-  }
-  
+  };
+
   useEffect(() => {
     getTeletubbies();
   }, []);
 
- 
   const renderTeletubbyCard = (teletubby, index) => {
     return (
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12} key={index}>
@@ -42,7 +41,7 @@ const Teletubbies = () => {
       </Grid>
     );
   };
-  
+
   return (
     <div>
       <Typography
@@ -57,13 +56,18 @@ const Teletubbies = () => {
       >
         Teletubbies
       </Typography>
-      <p>s;lk;lkfj;lskdfl;ke;lfe</p>
 
-      <Grid container spacing={3}   sx={{ "& > div": { border: "1px solid black" } }}>
-      {teletubbies.map((teletubby, index) => renderTeletubbyCard(teletubby, index))}
+      <Grid
+        container
+        spacing={3}
+        sx={{ "& > div": { border: "1px solid black" } }}
+      >
+        {teletubbies.map((teletubby, index) =>
+          renderTeletubbyCard(teletubby, index)
+        )}
       </Grid>
     </div>
   );
-}
+};
 
 export default Teletubbies;
