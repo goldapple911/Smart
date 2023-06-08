@@ -32,3 +32,17 @@ export const getCurrenTeletubbyData = async () => {
     throw error;
   }
 };
+
+const buildingOptions = {
+  method: "GET",
+  url: "/buildings.json",
+};
+
+export const getCurrentBuildingsData = async () => {
+  try {
+    const response = await axios.request(buildingOptions);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

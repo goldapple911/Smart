@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Grid, TextField, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Grid,Typography} from "@mui/material";
 import { getCurrenTeletubbyData } from "api";
 import renderTeletubbyCard from "../../components/Teletubby/index";
 const Teletubbies = () => {
@@ -27,7 +27,7 @@ const Teletubbies = () => {
           marginLeft: "auto",
           marginRight: "auto",
         }}
-        mt={4}
+        mt={12}
         mb={3}
       >
         Teletubbies
@@ -36,7 +36,7 @@ const Teletubbies = () => {
       <Grid
         container
         spacing={3}
-        sx={{ "& > div": { border: "1px solid black" } }}
+        sx={{ "& > div": { border: "1px solid black" } , paddingLeft:10, paddingRight:10}}
       >
         {teletubbies.map((teletubby, index) =>
           renderTeletubbyCard(teletubby, index)
