@@ -14,8 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-             <Route path="/teletubbies" element={<Teletubbies/>} />
              <Route path="*" element={<NoPage/>} />
+             <Route path="/teletubbies" element={<Teletubbies/>} />
           </Route>
         </Routes>
       </BrowserRouter>

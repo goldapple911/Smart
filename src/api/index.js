@@ -20,8 +20,8 @@ export const getCurrentWeatherData = async () => {
 };
 
 const teletubbyOptions = {
-  method:"GET",
-  url:"/teletubbies.json",
+  method: "GET",
+  url: "/teletubbies.json",
 };
 
 export const getCurrenTeletubbyData = async () => {
@@ -32,4 +32,3 @@ export const getCurrenTeletubbyData = async () => {
     throw error;
   }
 };
-

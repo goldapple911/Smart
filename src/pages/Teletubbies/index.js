@@ -31,6 +31,7 @@ const Teletubbies = () => {
           <h3>{teletubby.name}</h3>
           <p>{teletubby.description}</p>
           <div>
+            {}
             {teletubby.traits.map((trait, i) => (
               <button key={i} style={{ margin: "5px" }}>
                 {trait}
