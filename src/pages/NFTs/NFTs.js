@@ -24,28 +24,28 @@ const NFTListings = () => {
   }, []);
 
   return (
-    <div >
-      <div >
-        <div>
+    <div className=" flex flex-row justify-center">
+      <div className="flex flex-col justify-center mx-auto">
+        <div className=" flex flex-row mt-20 flex-wrap justify-center">
           {data.results &&
             data.results.length > 0 &&
             data.results.map((item, key) => (
-              <Card sx={{ maxWidth: 345 }} >
+              <Card sx={{ maxWidth: 345 }} className=" w-1/5 h-1/4 mx-2 mt-2">
                 <CardActionArea>
                   <CardMedia
                     component="img"
                     image={item.img}
                     alt={item.name}
-
+                    className=" w-full h-32"
                   />
-                  <CardContent >
+                  <CardContent className=" flex justify-around">
                     <Typography
                       gutterBottom
                     >
-                      <p >Name:{item.onChainCollection.data.name}</p>
+                      <p className=" font-bold">Name:{item.onChainCollection.data.name}</p>
                     </Typography>
                     <Typography >
-                      <p> Price:{item.price}</p>
+                      <p className=" font-bold"> Price:{item.price}</p>
                     </Typography>
                   </CardContent>
                 </CardActionArea>
