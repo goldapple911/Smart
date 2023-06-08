@@ -42,6 +42,28 @@ const Teletubbies = () => {
     );
   };
   
+  return (
+    <div>
+      <Typography
+        variant="h2"
+        sx={{
+          width: "50%",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+        mt={4}
+        mb={3}
+      >
+        Teletubbies
+      </Typography>
+
+      <Grid container spacing={3} className="teletubby-grid-container">
+        {teletubbies.map((teletubby, index) => {
+          return renderTeletubbyCard(teletubby, index);
+        })}
+      </Grid>
+    </div>
+  );
 }
 
 export default Teletubbies;
