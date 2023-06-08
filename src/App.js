@@ -17,7 +17,7 @@ function App() {
             <Route path="/nfts" element={<NFTSListPage />} />
             <Route path="/buildings" element={<Buildings />} />
             <Route path="*" element={<NoPage />} />
-          </Route>s
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

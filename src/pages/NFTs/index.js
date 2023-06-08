@@ -52,8 +52,6 @@ const NFTSListPage = () => {
         justifyContent: "center",
         mt: 15,
         mb: 10,
-        overflowY: "auto",
-        maxHeight: "70vh",
       }}
     >
       <Grid
