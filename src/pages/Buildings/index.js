@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { getCurrentBuildingsData } from "api";
+import { getCurrentBuildingsData } from 'api';
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Container,
+} from '@mui/material';
 
-import { Container } from "@mui/material";
-
-import TRowComponent from "components/Buildings/TRowcomponent";
+import TRowMappingComponent from 'components/Buildings/TRowMappingComponent';
 
 let PAGE_SIZE = 20;
 
 const Buildings = () => {
   const [buildingdata, setBuildingdata] = useState([]);
-
   const getCurrentBuildings = async () => {
     const result = await getCurrentBuildingsData();
 
@@ -31,14 +31,10 @@ const Buildings = () => {
     getCurrentBuildings();
   }, []);
 
-  // display 20 items in screen and more items whenever scroll downs
-
-  // const [buildings, setBuildings] = useState(buildingsData.buildings);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    // return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
   }, []);
 
   const handleScroll = () => {
@@ -55,10 +51,11 @@ const Buildings = () => {
   useEffect(() => {
     PAGE_SIZE += 3;
   }, [buildingdata]);
+
   return (
-    <Container maxWidth="md" className="pt-10">
+    <Container maxWidth='md' className='pt-10'>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
+        <Table sx={{ minWidth: 650 }} aria-label='simple table' stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>Site</TableCell>
@@ -69,10 +66,12 @@ const Buildings = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {buildingdata &&
-              buildingdata
-                .slice(0, PAGE_SIZE)
-                .map((item, i) => item && <TRowComponent item={item} />)}
+            {buildingdata
+              .slice(0, PAGE_SIZE)
+              .map(
+                (item, i) =>
+                  item && <TRowMappingComponent item={item} key={i} />
+              )}
           </TableBody>
         </Table>
       </TableContainer>

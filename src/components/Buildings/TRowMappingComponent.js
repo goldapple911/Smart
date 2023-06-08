@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import {
+  TableCell,
+  TableRow,
+  List,
+  ListItem,
+  ListItemText,
+} from '@mui/material';
 
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-
-const TRowComponent = (props) => {
+const TRowMappingComponent = (props) => {
   return (
     <TableRow>
       <TableCell>{props.item.Name}</TableCell>
@@ -48,4 +45,4 @@ const TRowComponent = (props) => {
     </TableRow>
   );
 };
-export default TRowComponent;
+export default TRowMappingComponent;

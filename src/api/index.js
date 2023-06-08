@@ -21,7 +21,7 @@ export const getCurrentWeatherData = async () => {
 
 const buildingOptions = {
   method: "GET",
-  url: "./buildings.json",
+  url: "/buildings.json",
 };
 export const getCurrentBuildingsData = async () => {
   try {
