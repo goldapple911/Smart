@@ -38,18 +38,21 @@ const Teletubbies = () => {
 
   return (
     <div>
-      <Typography
-        variant="h2"
-        sx={{
-          width: "50%",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-        mt={12}
-        mb={3}
-      >
-        Teletubbies
-      </Typography>
+      <Grid item md={4} lg={2} sm={6} xs={8} >
+        <Typography
+          variant="h3"
+          sx={{
+            width: "50%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center",
+          }}
+          mt={12}
+          mb={2}
+        >
+          Teletubbies
+        </Typography>
+      </Grid>
       <div ref={containerRef}>
         <TextField
           label="Search Teletubbies"

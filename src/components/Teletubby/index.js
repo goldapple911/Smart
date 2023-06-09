@@ -7,9 +7,9 @@ const renderTeletubbyCard = (teletubby, index) => {
       direction={index % 2 ? "row-reverse" : "row"}
       key={index}
       alignItems="center"
+      marginX={{ sm: 3, md: 4, lg: 10 }}
       sx={{
         marginY: 1,
-        marginX: 20,
         border: 1,
         overflow: "auto",
       }}
@@ -17,14 +17,14 @@ const renderTeletubbyCard = (teletubby, index) => {
       <Grid item md={4} lg={2} sm={6} xs={12}>
         <Box sx={{ maxWidth: "100%" }}>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP76b2ZOBjyeUqGngkDSc_bE4ASrqGaLTmWA&usqp=CAU"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3fIR6ZplV679L17eq6JYBzxTk_19gQ3AlK0hf2Ek5Tw53UFqxaDZDSuvNW8Iqj4UVeTc&usqp=CAU"
             alt={teletubby.name}
-            style={{ width: "100%" }}
+            style={{ width: "100%", border: 1, margin: 0 }}
           />
         </Box>
       </Grid>
-      <Grid item md={8} lg={10} sm={6} xs={12}>
-        <Box sx={{ marginX: 5 }}>
+      <Grid item md={8} lg={10} sm={6} xs={12} sx={4}>
+        <Box sx={{ marginX: 3 }}>
           <Typography variant="h3">{teletubby.name}</Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
             {teletubby.description}

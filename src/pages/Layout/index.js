@@ -5,19 +5,12 @@ import Header from "components/Header";
 
 const Layout = () => {
   return (
-    <Box
-    // sx={{
-    //   display: "flex",
-    //   flexDirection: "column",
-    //   overflow: "hidden",
-    //   height: "100vh",
-    // }}
-    >
+    <Box>
       <header>
         <Header />
       </header>
 
-      {/* <Box sx={{ overflow: "auto" }}> */}
+
       <Outlet />
     </Box>
   );
