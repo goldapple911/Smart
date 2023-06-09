@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Grid, Typography, TextField } from "@mui/material";
-import { getCurrenTeletubbyData } from "api";
-import renderTeletubbyCard from "../../components/Teletubby/index";
+import React, { useState, useEffect, useRef } from 'react';
+import { Grid, Typography, TextField } from '@mui/material';
+import { getCurrenTeletubbyData } from 'api';
+import renderTeletubbyCard from '../../components/Teletubby/index';
 
 const Teletubbies = () => {
   const [numTeletubbiesToShow, setNumTeletubbiesToShow] = useState(20);
   const [visibleTeletubbies, setVisibleTeletubbies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const containerRef = useRef(null);
   const filteredTeletubbies = visibleTeletubbies.filter((teletubby) => {
     return teletubby.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -32,20 +32,20 @@ const Teletubbies = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   });
 
   return (
     <div>
       <Grid item md={4} lg={2} sm={6} xs={8} >
         <Typography
-          variant="h3"
+          variant='h3'
           sx={{
-            width: "50%",
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",
+            width: '50%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center',
           }}
           mt={12}
           mb={2}
@@ -55,20 +55,20 @@ const Teletubbies = () => {
       </Grid>
       <div ref={containerRef}>
         <TextField
-          label="Search Teletubbies"
-          variant="outlined"
-          width="50%"
+          label='Search Teletubbies'
+          variant='outlined'
+          width='50%'
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
-          style={{ marginBottom: "20px" }}
+          style={{ marginBottom: '20px' }}
         />
         <Grid
           container
           spacing={1}
           sx={{
-            "& > div": { border: "1px solid black" },
+            '& > div': { border: '1px solid black' },
           }}
-          style={{ textAlign: "left" }}
+          style={{ textAlign: 'left' }}
         >
           {filteredTeletubbies
             .slice(0, numTeletubbiesToShow)
