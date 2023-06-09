@@ -56,7 +56,7 @@ const Buildings = () => {
       hasMore={true}
       loader={<h4>Loading...</h4>}
     >
-      <Container maxWidth='md' sx={{ mt: 5 }}>
+      <Container maxWidth='md' sx={{ mt: 20 }}>
         <Table sx={{ minWidth: 650 }} stickyHeader aria-label='sticky table'>
           <TableHead sx={{ zIndex: 2 }}>
             <TableRow>
