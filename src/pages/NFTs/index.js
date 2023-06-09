@@ -10,6 +10,7 @@ import {
   Container,
 } from "@mui/material";
 import { getNFTList } from "api";
+import NftListingCard from "../../components/NftListingCard";
 
 const NFTSListPage = () => {
   const [nftListing, setNftListing] = useState([]);
@@ -44,7 +45,7 @@ const NFTSListPage = () => {
   }, [offset]);
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center", mt: 20 }}>
+    <Container sx={{ display: "flex", justifyContent: "center", mt: 20 }} >
       <Grid
         container
         spacing={2}
@@ -57,36 +58,7 @@ const NFTSListPage = () => {
         }}
       >
         {filteredNftListing.map((nftListing) => (
-          <Grid
-            item
-            xs={2}
-            sm={4}
-            md={4}
-            lg={4}
-            xl={5}
-            key={nftListing.id}
-            sx={{ maxWidth: 345, mt: 2 }}
-            px={2}
-          >
-            <Card>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image={nftListing.img}
-                  alt={nftListing.name}
-                  height={200}
-                />
-                <CardContent
-                  sx={{ display: "flex", justifyContent: "space-around" }}
-                >
-                  <Typography gutterBottom>
-                    Name:{nftListing.collectionName}
-                  </Typography>
-                  <Typography>Price:{nftListing.price}$</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
+          <NftListingCard nftListing={nftListing} />
         ))}
       </Grid>
     </Container>
