@@ -27,11 +27,11 @@ const Teletubbies = () => {
 
   const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      setNumTeletubbiesToShow(numTeletubbiesToShow + 20);
+      setNumTeletubbiesToShow(numTeletubbiesToShow + 1);
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {   
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });

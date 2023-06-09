@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  CardActionArea,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
   Grid,
   Container,
 } from "@mui/material";
@@ -17,7 +11,6 @@ const NFTSListPage = () => {
   const [nftListing, setNftListing] = useState([]);
   const [filteredNftListing, setFilteredNftListing] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
 
   const loadNftListing = async () => {
     const responseData = await getNFTList(offset);
@@ -52,8 +45,6 @@ const NFTSListPage = () => {
         justifyContent: "center",
         mt: 15,
         mb: 10,
-        overflowY: "auto",
-        maxHeight: "70vh",
       }}
     >
       <Grid
