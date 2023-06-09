@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  CardActionArea,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
+  TextField,
   Grid,
   Container,
 } from "@mui/material";
@@ -45,6 +40,22 @@ const NFTSListPage = () => {
     };
   }, [offset]);
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+
+  useEffect(() => {
+    loadNftListing();
+  }, []);
+
+  useEffect(() => {
+    setFilteredNftListing(
+      nftListing.filter((nftListing) =>
+        nftListing.collectionName.toLowerCase().includes(searchTerm)
+      )
+    );
+  }, [nftListing, searchTerm]);
+
   return (
     <Container
       sx={{
@@ -54,6 +65,14 @@ const NFTSListPage = () => {
         mb: 10,
       }}
     >
+      <TextField
+                placeholder="Search nft name"
+                variant="outlined"
+                value={searchTerm}
+                onChange={handleSearch}
+                sx={{padding:5}}
+            />
+
       <Grid
         container
         spacing={2}
