@@ -1,24 +1,40 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { TextField, Grid, Container } from "@mui/material";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  TextField,
+  Grid,
+  Container,
+} from "@mui/material";
 import { getNFTList } from "api";
-import NftListingCard from "../../components/NftListingCard";
+import NftListingCard from "components/NftListingCard";
+import Spinner from "components/Spinner";
 
 const NFTSListPage = () => {
   const [nftListing, setNftListing] = useState([]);
   const [filteredNftListing, setFilteredNftListing] = useState([]);
   const [offset, setOffset] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  let loading = useRef(false);
 
-  const loadNftListing = useCallback(async () => {
-    const responseData = await getNFTList(offset);
-    setNftListing([...nftListing, ...responseData.results]);
-    setFilteredNftListing([...nftListing, ...responseData.results]);
-    setOffset(offset + 20);
-  }, [offset, nftListing]);
+  const loadNftListing = async () => {
+    try {
+      if(!loading.current) {
+        loading.current = true;
+        const responseData = await getNFTList(offset);
+        setNftListing([...nftListing, ...responseData.results]);
+        setFilteredNftListing([...nftListing, ...responseData.results]);
+        setOffset(offset + 20);
+        loading.current = false;
+      }
+    }catch(err) {
+      console.log(err)
+      loading.current = false
+    }
+  };
 
   useEffect(() => {
     loadNftListing();
-  }, [loadNftListing]);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +49,8 @@ const NFTSListPage = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [offset, loadNftListing]);
+    // eslint-disable-next-line
+  }, [offset]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
@@ -76,9 +93,18 @@ const NFTSListPage = () => {
           justifyContent: "center",
         }}
       >
-        {filteredNftListing.map((nftListing, index) => (
-          <NftListingCard nftListing={nftListing} key={index} />
-        ))}
+        { loading.current 
+          ?
+            <Spinner /> 
+          :
+            filteredNftListing.length
+              ? 
+                filteredNftListing.map((nftListing, index) => (
+                  <NftListingCard nftListing={nftListing} key={index} />
+                ))
+              : 
+                <div>There's no items to show</div>
+        }
       </Grid>
     </Container>
   );
