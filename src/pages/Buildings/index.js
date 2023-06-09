@@ -42,7 +42,6 @@ const Buildings = () => {
   };
 
   useEffect(() => {
-    console.log(buildingData);
     if (buildingData.length) getBuildings(0, 20);
   }, [buildingData]);
 
