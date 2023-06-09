@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const weatherOptions = {
   method: "GET",
@@ -20,8 +20,8 @@ export const getCurrentWeatherData = async () => {
 };
 
 const teletubbyOptions = {
-  method: "GET",
-  url: "/teletubbies.json",
+  method: 'GET',
+  url:' /teletubbies.json',
 };
 
 export const getCurrenTeletubbyData = async () => {
@@ -34,7 +34,7 @@ export const getCurrenTeletubbyData = async () => {
 };
 
 const NFTOptions = {
-  method: "GET",
+  method: 'GET',
   url: "https://api-mainnet.magiceden.io/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears&limit=20&offset=",
 };
 
@@ -51,8 +51,8 @@ export const getNFTList = async (offset) => {
 };
 
 const buildingOptions = {
-  method: "GET",
-  url: "/buildings.json",
+  method: 'GET',
+  url: '/buildings.json',
 };
 
 export const getCurrentBuildingsData = async () => {
