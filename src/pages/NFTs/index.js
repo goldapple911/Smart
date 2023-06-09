@@ -60,8 +60,9 @@ const NFTSListPage = () => {
     <Container
       sx={{
         display: "flex",
+        flexDirection:"column",
         justifyContent: "center",
-        mt: 15,
+        mt: 10,
         mb: 10,
       }}
     >
@@ -70,7 +71,7 @@ const NFTSListPage = () => {
                 variant="outlined"
                 value={searchTerm}
                 onChange={handleSearch}
-                sx={{padding:5}}
+                sx={{padding:5, width:"40%", mx:"auto"}}
             />
 
       <Grid
