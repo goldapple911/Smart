@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Container, Typography, Box } from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { Container, Typography, Box } from '@mui/material';
 
-import { getCurrentWeatherData } from "api";
-import Spinner from "components/Spinner";
+import { getCurrentWeatherData } from 'api';
+import Spinner from 'components/Spinner';
 
 const Home = () => {
   const [currentWeatherData, setCurrentWeatherData] = useState(undefined);
@@ -20,28 +20,28 @@ const Home = () => {
   }, []);
 
   return (
-    <Container maxWidth="xl">
-      <Typography variant="h1" sx={{ marginTop: "30px" }}>
+    <Container maxWidth='xl'>
+      <Typography variant='h1' sx={{ marginTop: '100px' }}>
         Today's weather
       </Typography>
 
       {isLoadingWeatherData ? (
         <Spinner />
       ) : currentWeatherData ? (
-        <Box sx={{ marginTop: "20px" }}>
-          <Typography variant="h2">
+        <Box sx={{ marginTop: '20px' }}>
+          <Typography variant='h2'>
             {currentWeatherData.location.name}
           </Typography>
           <img
             src={currentWeatherData.current.condition.icon}
-            alt="weather icon"
+            alt='weather icon'
           />
-          <Typography variant="h3">
+          <Typography variant='h3'>
             {currentWeatherData.current.temp_c}°C
           </Typography>
         </Box>
       ) : (
-        "Server is not working."
+        'Server is not working.'
       )}
     </Container>
   );

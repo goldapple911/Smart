@@ -68,19 +68,19 @@ const NFTSListPage = () => {
     <Container
       sx={{
         display: "flex",
-        flexDirection:"column",
+        flexDirection: "column",
         justifyContent: "center",
         mt: 10,
         mb: 10,
       }}
     >
       <TextField
-                placeholder="Search nft name"
-                variant="outlined"
-                value={searchTerm}
-                onChange={handleSearch}
-                sx={{padding:5, width:"40%", mx:"auto"}}
-            />
+        placeholder="Search nft name"
+        variant="outlined"
+        value={searchTerm}
+        onChange={handleSearch}
+        sx={{ padding: 5, width: "40%", mx: "auto" }}
+      />
 
       <Grid
         container
