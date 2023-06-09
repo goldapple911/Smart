@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 
 import { getCurrentBuildingsData } from 'api';
@@ -13,17 +14,18 @@ import {
   Container,
 } from '@mui/material';
 
-import TRowMappingComponent from 'components/Buildings/TRowMappingComponent';
-
-let PAGE_SIZE = 20;
+import BuildingTableRow from 'components/Buildings/BuildingTableRow ';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Buildings = () => {
-  const [buildingdata, setBuildingdata] = useState([]);
+  const [buildingData, setBuildingData] = useState([]);
+  const [buildings, setBuildings] = useState([]);
+
   const getCurrentBuildings = async () => {
     const result = await getCurrentBuildingsData();
 
     if (result.data) {
-      setBuildingdata(result.data.buildings);
+      setBuildingData(result.data.buildings);
     }
   };
 
@@ -31,51 +33,60 @@ const Buildings = () => {
     getCurrentBuildings();
   }, []);
 
-  const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight ||
-      searchQuery.length > 0
-    ) {
-      return;
+  const getBuildings = (start, end) => {
+    if (start === 0) {
+      setBuildings(buildingData.slice(start, end));
+    } else {
+      setBuildings([...buildings, ...buildingData.slice(start, end)]);
     }
-    setBuildingdata((prevBuildings) => prevBuildings.concat([]));
   };
 
   useEffect(() => {
-    PAGE_SIZE += 3;
-  }, [buildingdata]);
+    console.log(buildingData);
+    if (buildingData.length) getBuildings(0, 20);
+  }, [buildingData]);
+
+  const handleNext = () => {
+    console.log('here');
+    getBuildings(buildings.length, buildings.length + 20);
+  };
 
   return (
-    <Container maxWidth='md' className='pt-10'>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label='simple table' stickyHeader>
-          <TableHead>
-            <TableRow>
-              <TableCell>Site</TableCell>
-              <TableCell>Alerts</TableCell>
-              <TableCell>Savings</TableCell>
-              <TableCell>Uptime</TableCell>
-              <TableCell>Power</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {buildingdata
-              .slice(0, PAGE_SIZE)
-              .map(
-                (item, i) =>
-                  item && <TRowMappingComponent item={item} key={i} />
-              )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+    <InfiniteScroll
+      dataLength={buildings.length}
+      next={handleNext}
+      hasMore={true}
+      loader={<h4>Loading...</h4>}
+    >
+      <Container maxWidth='md' sx={{ mt: 5 }}>
+        <Paper sx={{ width: '100%' }}>
+          <TableContainer sx={{ maxHeight: 700 }} mt={4}>
+            <Table
+              sx={{ minWidth: 650 }}
+              stickyHeader
+              aria-label='sticky table'
+            >
+              <TableHead sx={{ zIndex: 2 }}>
+                <TableRow>
+                  <TableCell>No</TableCell>
+                  <TableCell>Site</TableCell>
+                  <TableCell>Alerts</TableCell>
+                  <TableCell>Savings</TableCell>
+                  <TableCell>Uptime</TableCell>
+                  <TableCell>Power</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {buildings.map(
+                  (item, i) =>
+                    item && <BuildingTableRow item={item} key={i} id={i} />
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </Container>{' '}
+    </InfiniteScroll>
   );
 };
 export default Buildings;
