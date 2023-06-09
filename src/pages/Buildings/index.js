@@ -93,9 +93,15 @@ const Buildings = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredBuidings.map(
-              (item, i) =>
-                item && <BuildingTableRow item={item} key={i} id={i} />
+            {filteredBuidings.length ? (
+              filteredBuidings.map(
+                (item, i) =>
+                  item && <BuildingTableRow item={item} key={i} id={i} />
+              )
+            ) : (
+              <TableRow>
+                <TableCell>Matching data doesn't exist!</TableCell>
+              </TableRow>
             )}
           </TableBody>
         </Table>
