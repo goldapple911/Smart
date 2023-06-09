@@ -10,7 +10,7 @@ import {
   Container,
 } from "@mui/material";
 
-const NFTListPage = () => {
+const NFTSListPage = () => {
   const [nftListing, setNftListing] = useState([]);
   const [filteredNftListing, setFilteredNftListing] = useState([]);
   const [offset, setOffset] = useState(0);
@@ -51,7 +51,6 @@ const NFTListPage = () => {
       <Grid
         container
         spacing={2}
-       
         columns={{ xs: 2, sm: 8, md: 12, lg: 16, xl: 20 }}
         sx={{
           display: "flex",
@@ -69,7 +68,6 @@ const NFTListPage = () => {
             xl={5}
             key={nftListing.id}
             sx={{ maxWidth: 345, mt:2,}}
-            className=""
             px={2}
           >
             <Card>
@@ -78,18 +76,17 @@ const NFTListPage = () => {
                   component="img"
                   image={nftListing.img}
                   alt={nftListing.name}
-                  className=" h-80"
                 />
                 <CardContent
                   sx={{ display: "flex", justifyContent: "space-around" }}
                 >
                   <Typography gutterBottom>
-                    <p className="font-bold">
+                    <p >
                       Name:{nftListing.collectionName}
                     </p>
                   </Typography>
                   <Typography>
-                    <p className="font-bold">Price:{nftListing.price}$</p>
+                    <p>Price:{nftListing.price}$</p>
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -100,4 +97,4 @@ const NFTListPage = () => {
     </Container>
   );
 };
-export default NFTListPage;
+export default NFTSListPage;

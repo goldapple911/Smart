@@ -4,7 +4,7 @@ import Layout from "pages/Layout";
 import Home from "pages/Home";
 import NoPage from "pages/NoPage";
 import "./App.css";
-import NFTListings from "pages/NFTs/NFTs";
+import NFTSListPage from "pages/NFTs";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/nfts" element={<NFTListings />} />
+            <Route path="/nfts" element={<NFTSListPage />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
