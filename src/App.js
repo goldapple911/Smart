@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/NFTs" element={<NFTListings />} />
+            <Route path="/nfts" element={<NFTListings />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
