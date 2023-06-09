@@ -10,15 +10,15 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/teletubbies" element={<Teletubbies />} />
-            <Route path="/nfts" element={<NFTSListPage />} />
-            <Route path="/buildings" element={<Buildings />} />
-            <Route path="*" element={<NoPage />} />
+            <Route path='/teletubbies' element={<Teletubbies />} />
+            <Route path='/nfts' element={<NFTSListPage />} />
+            <Route path='/buildings' element={<Buildings />} />
+            <Route path='*' element={<NoPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

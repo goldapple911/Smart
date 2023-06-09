@@ -10,8 +10,8 @@ const Teletubbies = () => {
   const containerRef = useRef(null);
   const filteredTeletubbies = visibleTeletubbies.filter((teletubby) => {
     return teletubby.name.toLowerCase().includes(searchTerm.toLowerCase());
+    
   });
-
   const getTeletubbies = async () => {
     try {
       const response = await getCurrenTeletubbyData();
@@ -62,6 +62,9 @@ const Teletubbies = () => {
           onChange={(event) => setSearchTerm(event.target.value)}
           style={{ marginBottom: '20px' }}
         />
+        {filteredTeletubbies.length === 0 ? (
+          <p>There is no teletubby</p>
+        ) : (
         <Grid
           container
           spacing={1}
@@ -73,7 +76,7 @@ const Teletubbies = () => {
           {filteredTeletubbies
             .slice(0, numTeletubbiesToShow)
             .map((teletubby, index) => renderTeletubbyCard(teletubby, index))}
-        </Grid>
+        </Grid>)}
       </div>
     </div>
   );
