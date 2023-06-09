@@ -47,7 +47,6 @@ const Buildings = () => {
   }, [buildingData]);
 
   const handleNext = () => {
-    console.log('here');
     getBuildings(buildings.length, buildings.length + 20);
   };
 
@@ -59,33 +58,27 @@ const Buildings = () => {
       loader={<h4>Loading...</h4>}
     >
       <Container maxWidth='md' sx={{ mt: 5 }}>
-        <Paper sx={{ width: '100%' }}>
-          <TableContainer sx={{ maxHeight: 700 }} mt={4}>
-            <Table
-              sx={{ minWidth: 650 }}
-              stickyHeader
-              aria-label='sticky table'
-            >
-              <TableHead sx={{ zIndex: 2 }}>
-                <TableRow>
-                  <TableCell>No</TableCell>
-                  <TableCell>Site</TableCell>
-                  <TableCell>Alerts</TableCell>
-                  <TableCell>Savings</TableCell>
-                  <TableCell>Uptime</TableCell>
-                  <TableCell>Power</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {buildings.map(
-                  (item, i) =>
-                    item && <BuildingTableRow item={item} key={i} id={i} />
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-      </Container>{' '}
+        <TableContainer sx={{ maxHeight: 700 }} mt={4}>
+          <Table sx={{ minWidth: 650 }} stickyHeader aria-label='sticky table'>
+            <TableHead sx={{ zIndex: 2 }}>
+              <TableRow>
+                <TableCell>No</TableCell>
+                <TableCell>Site</TableCell>
+                <TableCell>Alerts</TableCell>
+                <TableCell>Savings</TableCell>
+                <TableCell>Uptime</TableCell>
+                <TableCell>Power</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {buildings.map(
+                (item, i) =>
+                  item && <BuildingTableRow item={item} key={i} id={i} />
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     </InfiniteScroll>
   );
 };
