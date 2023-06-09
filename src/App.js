@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "pages/Layout";
 import Home from "pages/Home";
 import NoPage from "pages/NoPage";
-import "./App.css";
+import Buildings from "pages/Buildings";
 import NFTSListPage from "pages/NFTs";
+import "./App.css";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/nfts" element={<NFTSListPage />} />
+            <Route path="/buildings" element={<Buildings />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

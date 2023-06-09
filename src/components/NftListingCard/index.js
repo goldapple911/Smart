@@ -26,7 +26,7 @@ function NftListingCard({ nftListing }) {
             component="img"
             image={nftListing.img}
             alt={nftListing.name}
-            height={200}
+            height={250}
           />
           <CardContent sx={{ display: "flex", justifyContent: "space-around" }}>
             <Typography gutterBottom>

@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { getNFTList } from "api";
 import NftListingCard from "../../components/NftListingCard";
+import { maxHeight } from "@mui/system";
 
 const NFTSListPage = () => {
   const [nftListing, setNftListing] = useState([]);
@@ -45,7 +46,16 @@ const NFTSListPage = () => {
   }, [offset]);
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center", mt: 20 }} >
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        mt: 15,
+        mb: 10,
+        overflowY: "auto",
+        maxHeight: "70vh",
+      }}
+    >
       <Grid
         container
         spacing={2}
