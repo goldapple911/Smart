@@ -17,7 +17,7 @@ const renderTeletubbyCard = (teletubby, index) => {
       <Grid item md={4} lg={2} sm={6} xs={12}>
         <Box sx={{ maxWidth: '100%' }}>
           <img
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3fIR6ZplV679L17eq6JYBzxTk_19gQ3AlK0hf2Ek5Tw53UFqxaDZDSuvNW8Iqj4UVeTc&usqp=CAU'
+            src={teletubby.image_url}
             alt={teletubby.name}
             style={{ width: '100%', border: 1, margin: 0 }}
           />

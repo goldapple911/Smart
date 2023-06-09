@@ -57,10 +57,10 @@ const Teletubbies = () => {
         <TextField
           label='Search Teletubbies'
           variant='outlined'
-          width='50%'
+          fullWidth
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
-          style={{ marginBottom: '20px' }}
+          style={{ marginBottom: '20px', width:"50%" }}
         />
         {filteredTeletubbies.length === 0 ? (
           <p>There is no teletubby</p>
