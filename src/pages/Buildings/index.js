@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { useEffect, useState, useMemo } from 'react';
 
+import Spinner from 'components/Spinner';
 import { getCurrentBuildingsData } from 'api';
 
 import {
@@ -74,7 +75,11 @@ const Buildings = () => {
         dataLength={buildings.length}
         next={handleNext}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={
+          <h4>
+            <Spinner />
+          </h4>
+        }
       >
         <Table sx={{ minWidth: 650 }} stickyHeader aria-label='sticky table'>
           <TableHead sx={{ zIndex: 2 }}>
