@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { useEffect, useState, useMemo } from 'react';
 
+import Spinner from 'components/Spinner';
 import { getCurrentBuildingsData } from 'api';
 
 import {
@@ -74,7 +75,11 @@ const Buildings = () => {
         dataLength={buildings.length}
         next={handleNext}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={
+          <h4>
+            <Spinner />
+          </h4>
+        }
       >
         <Table sx={{ minWidth: 650 }} stickyHeader aria-label='sticky table'>
           <TableHead sx={{ zIndex: 2 }}>
@@ -88,9 +93,15 @@ const Buildings = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredBuidings.map(
-              (item, i) =>
-                item && <BuildingTableRow item={item} key={i} id={i} />
+            {filteredBuidings.length ? (
+              filteredBuidings.map(
+                (item, i) =>
+                  item && <BuildingTableRow item={item} key={i} id={i} />
+              )
+            ) : (
+              <TableRow>
+                <TableCell>Matching data doesn't exist!</TableCell>
+              </TableRow>
             )}
           </TableBody>
         </Table>
