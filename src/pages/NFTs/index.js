@@ -9,6 +9,7 @@ import {
   Grid,
   Container,
 } from "@mui/material";
+import { getNFTList } from "api";
 
 const NFTSListPage = () => {
   const [nftListing, setNftListing] = useState([]);
@@ -17,14 +18,10 @@ const NFTSListPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const loadNftListing = async () => {
-    const response = await fetch(
-      `https://api-mainnet.magiceden.io/idxv2/getListedNftsByCollectionSymbol?collectionSymbol=okay_bears&limit=20&offset=${offset}`
-    );
-    const data = await response.json();
-    setNftListing([...nftListing, ...data.results]);
-    setFilteredNftListing([...nftListing, ...data.results]);
+    const responseData = await getNFTList(offset);
+    setNftListing([...nftListing, ...responseData.results]);
+    setFilteredNftListing([...nftListing, ...responseData.results]);
     setOffset(offset + 20);
-    console.log(response);
   };
 
   useEffect(() => {
@@ -47,7 +44,7 @@ const NFTSListPage = () => {
   }, [offset]);
 
   return (
-    <Container sx={{ display: "flex", justifyContent: "center", mt:20}} >
+    <Container sx={{ display: "flex", justifyContent: "center", mt: 20 }}>
       <Grid
         container
         spacing={2}
@@ -61,13 +58,14 @@ const NFTSListPage = () => {
       >
         {filteredNftListing.map((nftListing) => (
           <Grid
+            item
             xs={2}
             sm={4}
             md={4}
             lg={4}
             xl={5}
             key={nftListing.id}
-            sx={{ maxWidth: 345, mt:2,}}
+            sx={{ maxWidth: 345, mt: 2 }}
             px={2}
           >
             <Card>
@@ -76,18 +74,15 @@ const NFTSListPage = () => {
                   component="img"
                   image={nftListing.img}
                   alt={nftListing.name}
+                  height={200}
                 />
                 <CardContent
                   sx={{ display: "flex", justifyContent: "space-around" }}
                 >
                   <Typography gutterBottom>
-                    <p >
-                      Name:{nftListing.collectionName}
-                    </p>
+                    Name:{nftListing.collectionName}
                   </Typography>
-                  <Typography>
-                    <p>Price:{nftListing.price}$</p>
-                  </Typography>
+                  <Typography>Price:{nftListing.price}$</Typography>
                 </CardContent>
               </CardActionArea>
             </Card>
