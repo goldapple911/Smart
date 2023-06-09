@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Grid, Typography, TextField } from '@mui/material';
 import { getCurrenTeletubbyData } from 'api';
-import renderTeletubbyCard from '../../components/Teletubby/index';
+import TeletubbyCard from 'components/Teletubby/index';
 
 const Teletubbies = () => {
   const [numTeletubbiesToShow, setNumTeletubbiesToShow] = useState(20);
@@ -75,7 +75,9 @@ const Teletubbies = () => {
         >
           {filteredTeletubbies
             .slice(0, numTeletubbiesToShow)
-            .map((teletubby, index) => renderTeletubbyCard(teletubby, index))}
+            .map((teletubby, index) => 
+              <TeletubbyCard teletubby={teletubby} key={index} index={index} />
+            )}
         </Grid>)}
       </div>
     </div>

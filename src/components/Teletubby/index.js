@@ -1,11 +1,10 @@
 import { Grid, Box, Typography, Button } from '@mui/material';
 
-const renderTeletubbyCard = (teletubby, index) => {
+const TeletubbyCard = ({teletubby, index}) => {
   return (
     <Grid
       container
       direction={index % 2 ? 'row-reverse' : 'row'}
-      key={index}
       alignItems='center'
       marginX={{ sm: 3, md: 4, lg: 10 }}
       sx={{
@@ -23,7 +22,7 @@ const renderTeletubbyCard = (teletubby, index) => {
           />
         </Box>
       </Grid>
-      <Grid item md={8} lg={10} sm={6} xs={12} sx={4}>
+      <Grid item md={8} lg={10} sm={6} xs={12}>
         <Box sx={{ marginX: 3 }}>
           <Typography variant='h3'>{teletubby.name}</Typography>
           <Typography variant='body1' sx={{ mt: 2 }}>
@@ -32,7 +31,7 @@ const renderTeletubbyCard = (teletubby, index) => {
           <Box sx={{ mt: 2 }}>
             {teletubby.traits.map((item, key) => {
               return (
-                <Button variant='outlined' key={index} sx={{ mr: 2, mb: 1 }}>
+                <Button variant='outlined' key={key} sx={{ mr: 2, mb: 1 }}>
                   {item}
                 </Button>
               );
@@ -43,4 +42,4 @@ const renderTeletubbyCard = (teletubby, index) => {
     </Grid>
   );
 };
-export default renderTeletubbyCard;
+export default TeletubbyCard;
