@@ -79,7 +79,11 @@ const BuildingTableRow = (props) => {
       <TableCell>
         <Fab
           variant='extended'
-          sx={{ backgroundColor: '#ffd8d9', mx: 1, zIndex: 1, color: 'red' }}
+          sx={
+            props.item.Savings.slice(0, props.item.Savings.length - 1) < 100
+              ? { backgroundColor: '#ffd8d9', mx: 1, zIndex: 1, color: 'red' }
+              : { backgroundColor: '#eeeeee', mx: 1, zIndex: 1, color: 'red' }
+          }
         >
           {props.item.Savings}
         </Fab>
@@ -87,7 +91,16 @@ const BuildingTableRow = (props) => {
       <TableCell>
         <Fab
           variant='extended'
-          sx={{ backgroundColor: '#ffd8d9', mx: 1, zIndex: 1, color: 'red' }}
+          sx={
+            props.item.Uptime.slice(0, props.item.Uptime.length - 1) < 100
+              ? { backgroundColor: '#ffd8d9', mx: 1, zIndex: 1, color: 'red' }
+              : {
+                  backgroundColor: '#eeeeee',
+                  mx: 1,
+                  zIndex: 1,
+                  color: 'red',
+                }
+          }
         >
           {props.item.Uptime}
         </Fab>
